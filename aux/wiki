@@ -1,0 +1,43 @@
+#!/bin/env bash
+
+source "$(pwd)/con/app.conf"
+
+function packers_wikigen_takers() {
+    test -d $(pwd)/temp && rm -fr $(pwd)/temp
+    git clone "https://github.com/$app_github_dev_name/$app_github_dev_repo.wiki.git" $(pwd)/temp
+}
+
+
+function packers_wikigen_prepar() {
+    mv $(pwd)/doc/content/docs/_index.md $(pwd)/doc/content/wiki.md 
+    rm -fr $(pwd)/doc/content/docs/*
+}
+
+
+function packers_wikigen_deploy() {
+
+    local list=$( ls $(pwd)/temp/ )
+
+    for article in $list
+    do
+        local title=$(echo "$article" | sed 's/.md//g')
+        echo "---" > $(pwd)/doc/content/docs/${title,,}.md
+        echo "title : ${title,,}" >> $(pwd)/doc/content/docs/${title,,}.md
+        echo "---" >> $(pwd)/doc/content/docs/${title,,}.md
+        cat $(pwd)/temp/$article >> $(pwd)/doc/content/docs/${title,,}.md
+    done
+}
+
+
+function packers_wikigen_finish() {
+    mv $(pwd)/doc/content/wiki.md  $(pwd)/doc/content/docs/_index.md 
+    rm -fr $(pwd)/temp
+}
+
+
+function packer_wikigen() {
+    packers_wikigen_takers &&
+    packers_wikigen_prepar &&
+    packers_wikigen_deploy &&
+    packers_wikigen_finish 
+}

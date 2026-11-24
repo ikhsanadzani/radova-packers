@@ -1,0 +1,34 @@
+#!/bin/env bash
+
+source "$(pwd)/con/app.conf"
+
+
+function packers_apigen_github() {
+
+    ## create api data
+    mkdir -p $(pwd)/doc/assets/api/github &&
+
+    ## repository data
+    curl https://api.github.com/repos/$app_github_dev_name/$app_github_dev_repo > $(pwd)/doc/assets/api/github/repo.json
+    curl https://api.github.com/repos/$app_github_dev_name/$app_github_dev_repo/releases > $(pwd)/doc/assets/api/github/rels.json
+    curl https://api.github.com/repos/$app_github_dev_name/$app_github_dev_repo/contributors > $(pwd)/doc/assets/api/github/cont.json
+    curl https://api.github.com/repos/$app_github_dev_name/$app_github_dev_repo/releases/latest > $(pwd)/doc/assets/api/github/vers.json
+
+    ## developer data
+    curl https://api.github.com/users/$app_github_dev_name > $(pwd)/doc/assets/api/github/devs.json
+
+
+    ## maintener data
+    curl https://api.github.com/repos/$app_github_pkg_name/$app_github_pkg_repo/contributors > $(pwd)/doc/assets/api/github/pkgs.json
+}
+
+
+function packers_apigen_gitlab() {
+    mkdir -p ../doc/assets/api/gitlab
+}
+
+
+function packer_apigen() {
+    packers_apigen_github
+    packers_apigen_gitlab
+}
