@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Post 2 | Manual | Radova Packers</title>
   <meta name="description" content="Post 2 manual entry for Radova Packers.">
+  <link rel="canonical" href="/mans/post-2/">
   <link rel="icon" href="/favicon.ico">
   <script>
     (function () {
@@ -150,10 +151,12 @@
     .btn-primary { background: var(--red-600); color: var(--white); box-shadow: 0 4px 16px rgba(219,0,15,0.24); }
     .btn-outline { background: var(--surface-card); color: var(--text-heading); border: 1px solid var(--border-card); }
   </style>
+  <link rel="stylesheet" href="/assets/css/fonts.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/assets/css/mans-below.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="/assets/css/mans-below.css"></noscript>
+  <noscript><link rel="stylesheet" href="/assets/css/fonts.css"><link rel="stylesheet" href="/assets/css/mans-below.css"></noscript>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
   <header class="site-header">
     <a href="/" class="brand-link" aria-label="Radova Packers Home">
       <img class="brand-logo" src="/img/yuros_hu_c26bfce4cbb2ac63.webp" width="34" height="34" alt="Radova Logo">
@@ -192,16 +195,15 @@
     </div>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
     <section id="hero" class="hero" aria-labelledby="hero-title">
       <div class="hero-spec-strip" data-sys="SYS // PACKERS MANUAL ">
         <p class="hero-chip" data-i18n="chip">Packers Manual · v1.0.0.0</p>
       </div>
 
       <div class="hero-split">
-        <div class="hero-media" data-img="/img/banner.webp" data-alt="Radova Packers Banner">
+        <div class="hero-media">
           <img src="/img/banner.webp" alt="Radova Packers Banner" width="1096" height="613" fetchpriority="high" decoding="sync">
-          <noscript><img src="/img/banner.webp" alt="Radova Packers Banner" width="1096" height="613"></noscript>
         </div>
 
         <div class="hero-split-right">
@@ -237,10 +239,10 @@
           </div>
 
           <div class="pages">
-            <h1>Name</h1>
+            <h3>Name</h3>
             <p>Post 2</p>
 
-            <h1 id="kurosh-heading-1-description">Description</h1>
+            <h3 id="kurosh-heading-1-description">Description</h3>
             <p>Laborum voluptate pariatur ex culpa magna nostrud est incididunt fugiat
 pariatur do dolor ipsum enim. Consequat tempor do dolor eu. Non id id anim anim
 excepteur excepteur pariatur nostrud qui irure ullamco.</p>
@@ -293,30 +295,30 @@ excepteur excepteur pariatur nostrud qui irure ullamco.</p>
         <h2 class="footer-heading">Radova Packers</h2>
         <p class="footer-brand-desc">Official package documentation and manual portal for Radova Linux.</p>
       </div>
-      <div>
-        <h2 class="footer-heading">Navigation</h2>
+      <nav class="footer-col" aria-labelledby="footer-nav">
+        <h2 id="footer-nav" class="footer-heading">Navigation</h2>
         <ul class="footer-links">
           <li><a href="/mans/">Manual</a></li>
           <li><a href="/blog/">Tutorial</a></li>
           <li><a href="/docs/">Documentation</a></li>
         </ul>
-      </div>
-      <div>
-        <h2 class="footer-heading">Manual</h2>
+      </nav>
+      <nav class="footer-col" aria-labelledby="footer-manual">
+        <h2 id="footer-manual" class="footer-heading">Manual</h2>
         <ul class="footer-links">
           <li><a href="/mans/">Manual</a></li>
           <li><a href="/mans/post-1/">Post 1</a></li>
           <li><a href="/mans/post-2/">Post 2</a></li>
         </ul>
-      </div>
-      <div>
-        <h2 class="footer-heading">Resources</h2>
+      </nav>
+      <nav class="footer-col" aria-labelledby="footer-res">
+        <h2 id="footer-res" class="footer-heading">Resources</h2>
         <ul class="footer-links">
           <li><a href="/talks/">Forum</a></li>
           <li><a href="/info/">Info</a></li>
           <li><a href="https://github.com/rozard-webgen/packers" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
-      </div>
+      </nav>
     </div>
 
     <div class="footer-bottom">

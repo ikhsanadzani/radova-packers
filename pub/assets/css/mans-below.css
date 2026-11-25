@@ -1,5 +1,7 @@
 /* ponytail: below-the-fold & interaction styles only (above-the-fold is inlined in <head>) */
 :focus-visible{outline:2px solid var(--red-600);outline-offset:3px}
+.skip-link{position:absolute;top:-4rem;left:1rem;z-index:1000;padding:.5rem 1rem;background:var(--red-900);color:var(--white);border-radius:999px;font-weight:600;text-decoration:none}
+.skip-link:focus{top:.75rem}
 section[data-label]::after{content:"(" counter(section-counter,decimal-leading-zero) ")";position:absolute;top:clamp(2.5rem,5vw,4rem);right:max(var(--pad-x),calc((100% - var(--container-max)) / 2));font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--text-muted);pointer-events:none}
 main{counter-reset:section-counter}
 section[data-label]{counter-increment:section-counter}
@@ -26,12 +28,12 @@ button.btn-lang:hover{transform:translateY(-1px)}
 .manual-card-head{padding-bottom:1rem;margin-bottom:1.5rem;border-bottom:1px solid var(--border-line);padding-right:4.5rem}
 .manual-card-title{font-family:var(--font-heading);font-size:clamp(1.25rem,1.8vw,1.5rem);font-weight:900;line-height:1.2;color:var(--text-heading);margin:0 0 .25rem}
 .manual-card-meta{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin:0}
-.pages{counter-reset:h1;max-width:65ch}
-.pages h1{counter-reset:h2;font-family:var(--font-heading);font-size:1.125rem;font-weight:900;margin:1.5rem 0 .5rem;color:var(--text-heading)}
-.pages h1:first-child{margin-top:0}
-.pages h2{counter-reset:h3;font-family:var(--font-heading);font-size:1.05rem;margin:1.25rem 0 .45rem;color:var(--text-heading)}
-.pages h1::before{counter-increment:h1;content:counter(h1,decimal-leading-zero) " / ";font-family:var(--font-mono);color:var(--red-600)}
-.pages h2::before{counter-increment:h2;content:counter(h1,decimal-leading-zero) "." counter(h2) " / ";font-family:var(--font-mono);color:var(--red-600)}
+.pages{counter-reset:h3;max-width:65ch}
+.pages h3{counter-reset:h4;font-family:var(--font-heading);font-size:1.125rem;font-weight:900;margin:1.5rem 0 .5rem;color:var(--text-heading)}
+.pages h3:first-child{margin-top:0}
+.pages h4{font-family:var(--font-heading);font-size:1.05rem;margin:1.25rem 0 .45rem;color:var(--text-heading)}
+.pages h3::before{counter-increment:h3;content:counter(h3,decimal-leading-zero) " / ";font-family:var(--font-mono);color:var(--red-600)}
+.pages h4::before{counter-increment:h4;content:counter(h3,decimal-leading-zero) "." counter(h4) " / ";font-family:var(--font-mono);color:var(--red-600)}
 .pages p{font-size:16px;line-height:1.65;color:var(--text-muted);margin:0 0 1rem}
 .spec-card-interlock{background:var(--surface-card);border:1px solid var(--border-card);border-radius:18px;overflow:hidden;position:sticky;top:76px;transition:transform .2s ease}
 .spec-card-interlock:hover{border-color:var(--red-600);transform:translateY(-2px)}
