@@ -1,219 +1,246 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>Docs 1 | </title>
-
-
-
-
-
-<link type="text/css" rel="stylesheet" href="/css/head/docs.min.css" />    
- 
-
-   <script>
-    let darkmodes = localStorage.getItem('darkmode');
-
-if ( ! darkmodes )
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ) {
-        document.documentElement.setAttribute("dark-mode", "dark");
-    }
-    else {
-        document.documentElement.setAttribute("dark-mode", "light");
-    }
-else if ( darkmodes == 2 ) {
-    document.documentElement.setAttribute("dark-mode", "dark");
-}
-else if ( darkmodes == 3 )  {
-    document.documentElement.setAttribute("dark-mode", "light");
-}
-</script>
-
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation | Radova Packers</title>
+  <meta name="description" content="Documentation for Radova Packers.">
+  <link rel="canonical" href="/docs/">
+  <link rel="icon" href="/favicon.ico">
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("radova-theme");
+        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved === "dark" || (!saved && prefersDark)) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (_) {}
+    })();
+  </script>
+  <style>:root{--red-900: #A10000;--red-700: #BB080B;--red-600: #DB000F;--red-500: #FF0000;--navy-950: #0B0711;--navy-900: #0E0347;--navy-800: #150B52;--blue: #0B2E8D;--lavender: #F7F6FF;--white: #FFFFFF;--surface-page: #FFFFFF;--surface-card: #FFFFFF;--surface-subtle: #F7F6FF;--surface-dock: #F0EFFC;--surface-header: rgba(255,255,255,0.82);--text-primary: #0E0347;--text-heading: #A10000;--text-muted: #5B5A78;--text-accent: #DB000F;--border-line: rgba(14,3,71,0.10);--border-card: rgba(14,3,71,0.12);--font-heading: "Lato",system-ui,-apple-system,sans-serif;--font-body: "Roboto Variable",system-ui,-apple-system,sans-serif;--font-mono: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--pad-x: 1rem;--container-max: 100%}:root[data-theme="dark"]{--blue: #0035C6;--surface-page: #0B0711;--surface-card: #150B52;--surface-subtle: #150B52;--surface-dock: #0E0347;--surface-header: rgba(11,7,17,0.88);--text-primary: #FFFFFF;--text-heading: #FFFFFF;--text-muted: #C4C0D4;--text-accent: #DB000F;--border-line: rgba(196,192,212,0.18);--border-card: rgba(196,192,212,0.16)}*,*::before,*::after{box-sizing: border-box;margin: 0;padding: 0}html{font-size: 100%;scroll-behavior: smooth;-webkit-text-size-adjust: 100%}@media (min-width: 576px){:root{--container-max: 510px}}@media (min-width: 768px){:root{--container-max: 700px}}@media (min-width: 1024px){:root{--container-max: 950px}}@media (min-width: 1280px){:root{--container-max: 1200px}}@media (min-width: 1536px){:root{--container-max: 1450px}}body{font-family: var(--font-body);font-size: 1rem;line-height: 1.6;color: var(--text-primary);background-color: var(--surface-page);overflow-x: hidden;min-height: 100dvh;display: flex;flex-direction: column}h1,h2,h3,h4,h5,h6{font-family: var(--font-heading);color: var(--text-heading);font-weight: 900;line-height: 1.15;letter-spacing: -0.02em}a{color: inherit;text-decoration: none}img{display: block;max-width: 100%}button{font-family: inherit;cursor: pointer}:focus-visible{outline: 2px solid var(--red-600);outline-offset: 2px}.site-header,main,.site-footer{padding-inline: max(var(--pad-x),calc((100% - var(--container-max)) / 2))}main{flex: 1;padding-block: 1.5rem 3.5rem}:root[data-theme="dark"] main{background: radial-gradient(46% 52% at 82% 18%,rgba(219,0,15,0.16),transparent 72%),radial-gradient(38% 46% at 15% 32%,rgba(21,11,82,0.45),transparent 72%),var(--surface-page)}.site-header{position: sticky;top: 0;z-index: 100;min-height: 48px;padding-block: 0.65rem;display: flex;align-items: center;gap: 1.25rem;background: var(--surface-header);backdrop-filter: blur(16px) saturate(180%);-webkit-backdrop-filter: blur(16px) saturate(180%);border-bottom: 1px solid var(--border-line)}.brand-link{display: inline-flex;align-items: center;gap: 0.625rem;flex-shrink: 0}.brand-logo{width: 34px;height: 34px;border-radius: 8px;object-fit: contain}.brand-name{font-family: var(--font-heading);font-size: 0.8rem;font-weight: 900;letter-spacing: 0.02em;text-transform: uppercase;color: var(--navy-900)}:root[data-theme="dark"] .brand-name{color: var(--white)}.header-menu{display: flex;align-items: center;gap: 1.25rem;margin-left: auto}.nav-list{display: flex;align-items: center;list-style: none;gap: 1.125rem}.nav-list a{font-size: 15px;font-weight: 500;color: var(--navy-900);padding: 0.25rem 0.125rem;border-bottom: 2px solid transparent;transition: transform 0.2s ease,opacity 0.2s ease}.nav-list a:hover{opacity: 0.78}.nav-list a[aria-current="page"]{font-weight: 700;color: var(--red-900);border-bottom-color: var(--red-600)}:root[data-theme="dark"] .nav-list a{color: var(--white)}:root[data-theme="dark"] .nav-list a[aria-current="page"]{color: var(--white);border-bottom-color: var(--red-600)}.header-controls{display: flex;align-items: center;gap: 0.5rem}button.btn-theme{width: 36px;height: 36px;border-radius: 999px;border: 1px solid var(--border-card);background: var(--surface-subtle);color: var(--text-primary);display: inline-flex;align-items: center;justify-content: center;flex-shrink: 0;transition: transform 0.2s ease}button.btn-theme:hover{transform: scale(1.05)}button.btn-theme .icon-moon{display: none}:root[data-theme="dark"] button.btn-theme .icon-sun{display: none}:root[data-theme="dark"] button.btn-theme .icon-moon{display: block}button.btn-lang{height: 36px;padding: 0 0.75rem;border-radius: 16px;border: 1px solid var(--border-card);background: var(--surface-subtle);color: var(--text-primary);font-size: 13px;font-weight: 700;letter-spacing: 0.02em;transition: transform 0.2s ease}button.btn-lang:hover{transform: translateY(-1px)}.nav-toggle{display: none;width: 38px;height: 38px;margin-left: auto;border-radius: 10px;border: 1px solid var(--border-card);background: var(--surface-subtle);color: var(--text-primary);align-items: center;justify-content: center}@media (max-width: 767px){.nav-toggle{display: inline-flex}.header-menu{display: none;position: fixed;left: 0;right: 0;top: 58px;height: calc(100dvh - 58px);background: var(--surface-page);flex-direction: column;align-items: stretch;padding: 1.5rem var(--pad-x);gap: 1.25rem;overflow-y: auto;border-top: 1px solid var(--border-line);z-index: 99}.header-menu.is-open{display: flex}.nav-list{flex-direction: column;align-items: stretch;gap: 0.5rem}.nav-list a{display: block;padding: 0.75rem 0.5rem;font-size: 1rem;border-bottom: 1px solid var(--border-line)}.header-controls{flex-wrap: wrap;padding-top: 0.5rem}}.banner-wrapper{position: relative;width: 100%;margin: 0 auto}.banner{width: 100%;height: clamp(15.625rem,35vw,23.125rem);aspect-ratio: 16 / 9;border-radius: 20px;overflow: hidden;background: var(--navy-900)}.hero-media img,.banner-img{display: block;width: 100%;height: 100%;object-fit: cover;object-position: center}.info-bar{position: absolute;bottom: 0;left: 0;width: 100%;background: rgba(14,3,71,0.78);backdrop-filter: blur(12px) saturate(160%);-webkit-backdrop-filter: blur(12px) saturate(160%);border-top: 3px solid var(--red-600);border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;padding: clamp(0.75rem,1.5vw,0.95rem) clamp(1rem,2vw,1.5rem);display: flex;align-items: center;flex-wrap: wrap;gap: clamp(0.75rem,2vw,1.375rem);color: var(--white)}:root[data-theme="dark"] .info-bar{background: rgba(11,7,17,0.76)}.left-bar{display: flex;align-items: center;gap: clamp(0.75rem,2vw,1.25rem);flex: 1;min-width: 12.5rem}.right-bar{margin-left: auto;display: flex;align-items: center;gap: clamp(1.25rem,3vw,2.5rem)}.download-btn{display: inline-flex;align-items: center;gap: 0.5rem;height: 48px;padding: 0 1.5rem;background: var(--red-600);color: #FFFFFF;border: none;border-radius: 9999px;font-size: 14px;font-weight: 700;white-space: nowrap;box-shadow: 0 4px 16px rgba(219,0,15,0.24);transition: transform 0.2s ease,opacity 0.2s ease}.download-btn:hover{background: var(--red-700);transform: translateY(-2px)}.download-btn:active{transform: translateY(0)}.icons{display: flex;align-items: center;gap: 1rem}.icon-btn{display: inline-flex;align-items: center;justify-content: center;width: 38px;height: 38px;border-radius: 999px;color: var(--white);background: rgba(255,255,255,0.12);transition: transform 0.2s ease,opacity 0.2s ease}.icon-btn:hover{transform: translateY(-1px);background: rgba(255,255,255,0.22)}.info{display: flex;gap: clamp(1.5rem,4vw,3rem);align-items: center}.info .label{font-size: 11px;font-weight: 600;text-transform: uppercase;letter-spacing: 0.04em;opacity: 0.78;margin-bottom: 0.1rem}.info p{margin: 0;color: var(--white);font-size: 13px;font-weight: 600;line-height: 1.35}.author{display: flex;align-items: center;gap: 0.625rem}.avatar{width: 34px;height: 34px;border-radius: 10px;object-fit: cover}@media (max-width: 767px){.info-bar{position: static;border-radius: 0 0 20px 20px;flex-direction: column;align-items: flex-start}.banner{border-radius: 20px 20px 0 0;height: 12.5rem}.right-bar{margin-left: 0;width: 100%}.info{width: 100%;justify-content: space-between}}.panel{display: flex;flex-wrap: wrap;list-style: none;gap: clamp(0.5rem,1.2vw,0.875rem);margin-top: 1.5rem;margin-bottom: 1.75rem}.panel .item{display: inline-flex;align-items: center;gap: 0.5rem;padding: 0.6rem 1rem;border-radius: 16px;background: var(--surface-card);border: 1px solid var(--border-card);font-size: 14px;font-weight: 600;color: var(--text-primary);transition: transform 0.2s ease,opacity 0.2s ease}.panel .item:hover{border-color: var(--red-600);transform: translateY(-1px)}.panel .item.active{background: var(--red-600);border-color: var(--red-600);color: #FFFFFF;font-weight: 700;box-shadow: 0 4px 16px rgba(219,0,15,0.24)}.panel .icon{display: inline-flex;align-items: center;justify-content: center;color: inherit}@media (max-width: 480px){.panel .item span:not(.icon){display: none}}.overlay{display: flex;align-items: flex-start;gap: 2rem}.content{flex: 1;min-width: 0;order: 1;background: var(--surface-card);border: 1px solid var(--border-card);border-top: 3px solid var(--red-600);border-radius: 20px;padding: 1.5rem}@media (min-width: 768px){.content{padding: 2.25rem}}.content .header{display: flex;flex-wrap: wrap;align-items: center;justify-content: space-between;gap: 0.75rem;padding-bottom: 1.25rem;margin-bottom: 1.5rem;border-bottom: 2px solid var(--red-600)}.hero-chip{display: inline-flex;align-items: center;gap: 0.4rem;border-radius: 999px;padding: 0.35rem 0.9rem;font-size: 13px;font-weight: 700;color: var(--red-900);border: 1px solid rgba(219,0,15,0.25);background: rgba(219,0,15,0.04)}:root[data-theme="dark"] .hero-chip{color: #FF8A93;background: rgba(219,0,15,0.14);border-color: rgba(219,0,15,0.35)}.content h1.heading{font-size: clamp(1.25rem,1.8vw,1.5rem);font-weight: 900;line-height: 1.2;letter-spacing: -0.02em;color: var(--text-heading);text-transform: capitalize}.sidebar{width: clamp(15.625rem,24vw,18.75rem);flex-shrink: 0;order: 2;background: var(--surface-subtle);border: 1px solid var(--border-card);border-top: 3px solid var(--red-600);border-radius: 20px;padding: 1.25rem;position: sticky;top: 76px}.sidebar-title{display: flex;align-items: center;gap: 0.75rem;font-size: 1rem;font-weight: 900;color: var(--text-heading);padding-bottom: 0.75rem;margin-bottom: 0.875rem;border-bottom: 2px solid var(--red-600)}.sidebar-title svg{color: var(--red-600);flex-shrink: 0}.sidebar-block{list-style: none;display: flex;flex-direction: column;gap: 0.375rem}.pagelist .item{margin: 0}.pagelist .parent{display: flex;align-items: center;gap: 0.625rem;padding: 0.6rem 0.85rem;border-radius: 12px;border: 1px solid transparent;transition: transform 0.15s ease,opacity 0.15s ease}.pagelist .parent:hover{background: var(--surface-card);border-color: var(--border-card);transform: translateX(2px)}.pagelist .parent .icons{display: inline-flex;color: var(--text-muted)}.pagelist .parent .heading{font-size: 15px;font-weight: 500;color: var(--text-primary)}.pagelist .parent.is-active{background: var(--surface-card);border-color: var(--red-600)}:root[data-theme="dark"] .pagelist .parent.is-active{background: var(--navy-900)}.pagelist .parent.is-active .heading{color: var(--red-900);font-weight: 700}:root[data-theme="dark"] .pagelist .parent.is-active .heading{color: var(--white)}.pagelist .parent.is-active .icons{color: var(--red-600)}@media (max-width: 767px){.overlay{flex-direction: column;gap: 2rem}.sidebar{width: 100%;order: 2}}.pages{max-width: 65ch}.pages p{font-size: 1rem;line-height: 1.65;color: var(--text-primary);margin-bottom: 1rem}</style>
+  <link rel="stylesheet" href="/assets/css/docs-below.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/assets/css/docs-below.css"></noscript>
 </head>
 <body>
-    <header><header>
-    <div class="wrap"><a id="brand" href="/" class="flex center-x">
-    <img class="logo" src="/img/yuros_hu_c26bfce4cbb2ac63.webp" width="39" height="39" alt="Organization Logo"></a><nav id="navis" role="navigation">
-    <div id="hamburger">
-        <input type="checkbox" id="menuCheckbox" aria-label="hamburger-init-button" />
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</nav></div>
-</header></header>
-    <main>
-        <div class="wrap">
-<div class="banner-wrapper">
-    
-    <div class="banner">
-        <img src="/img/banner.webp" alt="banner" class="banner-img">
-    </div>
+  <header class="site-header">
+    <a href="/" class="brand-link" aria-label="Radova Packers Home">
+      <img class="brand-logo" src="/img/yuros_hu_c26bfce4cbb2ac63.webp" width="34" height="34" alt="Radova Logo">
+      <span class="brand-name">Radova Packers</span>
+    </a>
 
-    <div class="info-bar">
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="header-menu">
+      <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+        <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/>
+      </svg>
+    </button>
+
+    <div id="header-menu" class="header-menu">
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="/mans/">Manual</a></li>
+          <li><a href="/blog/">Tutorial</a></li>
+          <li><a href="/docs/" aria-current="page">Documentation</a></li>
+          <li><a href="/talks/">Forum</a></li>
+          <li><a href="/info/">Info</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <button type="button" id="theme-toggle" class="btn-theme" aria-label="Switch to dark mode" aria-pressed="false">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/>
+          </svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+            <path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/>
+          </svg>
+        </button>
+
+        <button type="button" id="lang-toggle" class="btn-lang" aria-label="Switch language to Indonesian">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="banner-wrapper">
+      <div class="banner hero-media" data-img="/img/banner.webp" data-alt="Radova Packers Banner">
+        <img src="/img/banner.webp" alt="Radova Packers Banner" class="banner-img" width="1200" height="613" decoding="async">
+        <noscript><img src="/img/banner.webp" alt="Radova Packers Banner"></noscript>
+      </div>
+
+      <div class="info-bar">
         <div class="left-bar">
-            <a href="https://api.github.com/repos/rozard-webgen/packers/tarball/v1.0.0.0" target="_blank" class="download-btn" aria-label="Download Package">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download
+          <a href="https://api.github.com/repos/rozard-webgen/packers/tarball/v1.0.0.0" target="_blank" rel="noopener noreferrer" class="download-btn" aria-label="Download Package">
+            <svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+              <path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/>
+            </svg>
+            <span data-i18n="download">Download</span>
+          </a>
+          <div class="icons">
+            <a href="https://github.com/rozard-webgen/packers" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+                <path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"/>
+              </svg>
             </a>
-            <div class="icons"><a href="https://github.com/rozard-webgen/packers" target="_blank" class="icon-btn" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </a></div>
+          </div>
         </div>
         <div class="right-bar">
-            <div class="info">
-                <div class="author">
-                    <img src="https://avatars.githubusercontent.com/u/108770134?v=4" class="avatar" alt="author" />
-                    <div>
-                        <p class="label">Developer</p>
-                        <p>Rozard Webgen</p>
-                    </div>
-                </div>
-                <div class="version">
-                    <p class="label">Latest Version</p>
-                    <p>v1.0.0.0</p>
-                </div>
+          <div class="info">
+            <div class="author">
+              <img src="https://avatars.githubusercontent.com/u/108770134?v=4" class="avatar" alt="" width="34" height="34" loading="lazy" decoding="async">
+              <div>
+                <p class="label" data-i18n="developer">Developer</p>
+                <p>Rozard Webgen</p>
+              </div>
             </div>
+            <div class="version">
+              <p class="label" data-i18n="version">Latest Version</p>
+              <p>v1.0.0.0</p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
+    <nav aria-label="Package Sections">
+      <ul class="panel">
+        <li>
+          <a href="/mans/" class="item">
+            <span class="icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"/></svg>
+            </span>
+            <span>Manual</span>
+          </a>
+        </li>
+        <li>
+          <a href="/blog/" class="item">
+            <span class="icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M208,160a32,32,0,0,0-24,10.84V96a40,40,0,0,0-40-40H123.31l18.35-18.34a8,8,0,0,0-11.32-11.32l-32,32a8,8,0,0,0,0,11.32l32,32a8,8,0,0,0,11.32-11.32L123.31,72H144a24,24,0,0,1,24,24v74.84A32,32,0,1,0,208,160ZM80,88a32,32,0,1,0-40,31v42.16A32,32,0,1,0,80,192a32,32,0,0,0-24-30.84V119A32,32,0,0,0,80,88ZM48,72A16,16,0,1,1,32,88,16,16,0,0,1,48,72Zm0,136a16,16,0,1,1,16-16A16,16,0,0,1,48,208Zm160,0a16,16,0,1,1,16-16A16,16,0,0,1,208,208Z"/></svg>
+            </span>
+            <span>Tutorial</span>
+          </a>
+        </li>
+        <li>
+          <a href="/docs/" class="item active" aria-current="page">
+            <span class="icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V96H40V56ZM40,112H96v88H40Zm176,88H112V112H216v88Z"/></svg>
+            </span>
+            <span>Documentation</span>
+          </a>
+        </li>
+        <li>
+          <a href="/talks/" class="item">
+            <span class="icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.84,15.84,0,0,0,9.25,14.5A16.05,16.05,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48Zm0,144H80a8,8,0,0,0-5.23,1.95L40,224V64H216Z"/></svg>
+            </span>
+            <span>Forum</span>
+          </a>
+        </li>
+        <li>
+          <a href="/info/" class="item">
+            <span class="icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></svg>
+            </span>
+            <span>Info</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-<nav>
-	<ul class="panel"><li>
-			<a href="/" class="item ">
-				<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></span>
-				<span>Wiki</span>
-			</a>
-		</li><li>
-			<a href="/mans" class="item ">
-				<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span>
-				<span>Manual</span>
-			</a>
-		</li><li>
-			<a href="/blog" class="item ">
-				<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-pull-request"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><line x1="6" y1="9" x2="6" y2="21"></line></svg></span>
-				<span>Tutorial</span>
-			</a>
-		</li><li>
-			<a href="/docs" class="item active">
-				<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></span>
-				<span>Documentation</span>
-			</a>
-		</li><li>
-			<a href="/talks" class="item ">
-				<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span>
-				<span>Forum</span>
-			</a>
-		</li><li>
-			<a href="/info" class="item ">
-				<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></span>
-				<span>Info</span>
-			</a>
-		</li></ul>
-</nav>
-<div class="overlay">
-		<article class="content docslist">
-			<div class="header">
-				<h1 class="heading">packers Documentation</h1>
-			</div>
-			<div class="pages">
-				<p>Tempor est exercitation ad qui pariatur quis adipisicing aliquip nisi ea consequat ipsum occaecat. Nostrud consequat ullamco laboris fugiat esse esse adipisicing velit laborum ipsum incididunt ut enim. Dolor pariatur nulla quis fugiat dolore excepteur. Aliquip ad quis aliqua enim do consequat.</p>
+    <div class="overlay">
+      <article class="content docslist">
+        <div class="header">
+          <h1 class="heading">packers Documentation</h1>
+          <span class="hero-chip">v1.0.0.0</span>
+        </div>
+        <div class="pages">
+          <p>Tempor est exercitation ad qui pariatur quis adipisicing aliquip nisi ea consequat ipsum occaecat. Nostrud consequat ullamco laboris fugiat esse esse adipisicing velit laborum ipsum incididunt ut enim. Dolor pariatur nulla quis fugiat dolore excepteur. Aliquip ad quis aliqua enim do consequat.</p>
+        </div>
+      </article>
 
-			</div>
-		</article>
-		<asside class="sidebar">
-<section class="pagelist">
-		<h2 class="sidebar-title">
-			<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></span> Navigation
-		</h2>
-		<ul class="sidebar-block"><li class="item open">
-			<div class="parent">
-				<span class="icons"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg></span>
-				<a class="heading" href="/docs/">Docs 1</a>
-			</div>
-        </li><li class="item open">
-			<div class="parent">
-				<span class="icons"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg></span>
-				<a class="heading" href="/docs/acknowledgement/">acknowledgement</a>
-			</div>
-        </li><li class="item open">
-			<div class="parent">
-				<span class="icons"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg></span>
-				<a class="heading" href="/docs/home/">home</a>
-			</div>
-        </li><li class="item open">
-			<div class="parent">
-				<span class="icons"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg></span>
-				<a class="heading" href="/docs/installation/">installation</a>
-			</div>
-        </li></ul>
-	</section></asside>
-	</div></div>
-    </main>
-    <footer><footer>
-    <div class="wrap"><a href="/" class="brand flex center-x">
-    <img class="logo" src="/img/yuros_hu_c26bfce4cbb2ac63.webp" width="39" height="39" alt="Organization Logo"></a><p class="text-small">Copyright 2026. All rights reserved.</p></div>
-</footer></footer>
+      <aside class="sidebar" aria-label="Documentation pages">
+        <section class="pagelist">
+          <h2 class="sidebar-title">
+            <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M104,32H64A16,16,0,0,0,48,48V208a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V48A16,16,0,0,0,104,32Zm0,176H64V48h40ZM192,32H152a16,16,0,0,0-16,16V208a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V48A16,16,0,0,0,192,32Zm0,176H152V48h40Z"/></svg>
+            <span data-i18n="navigation">Navigation</span>
+          </h2>
+          <ul class="sidebar-block">
+            <li class="item open">
+              <div class="parent is-active">
+                <span class="icons" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"/></svg></span>
+                <a class="heading" href="/docs/" aria-current="page">Docs 1</a>
+              </div>
+            </li>
+            <li class="item open">
+              <div class="parent">
+                <span class="icons" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"/></svg></span>
+                <a class="heading" href="/docs/acknowledgement/">acknowledgement</a>
+              </div>
+            </li>
+            <li class="item open">
+              <div class="parent">
+                <span class="icons" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"/></svg></span>
+                <a class="heading" href="/docs/home/">home</a>
+              </div>
+            </li>
+            <li class="item open">
+              <div class="parent">
+                <span class="icons" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"/></svg></span>
+                <a class="heading" href="/docs/installation/">installation</a>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
 
-    <link type="text/css" rel="stylesheet" href="/assets/css/docs.min.css" />
-<script src="/jsx/icons.js"></script>
-<script src="/jsx/script.js"></script>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h2 class="footer-heading">Radova Packers</h2>
+        <p class="footer-brand-desc">Official package documentation and manual portal for Radova Linux.</p>
+      </div>
+      <div>
+        <h2 class="footer-heading">Navigation</h2>
+        <ul class="footer-links">
+          <li><a href="/mans/">Manual</a></li>
+          <li><a href="/blog/">Tutorial</a></li>
+          <li><a href="/docs/">Documentation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-heading">Manual</h2>
+        <ul class="footer-links">
+          <li><a href="/mans/">Manual</a></li>
+          <li><a href="/mans/post-1/">Post 1</a></li>
+          <li><a href="/mans/post-2/">Post 2</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-heading">Resources</h2>
+        <ul class="footer-links">
+          <li><a href="/talks/">Forum</a></li>
+          <li><a href="/info/">Info</a></li>
+          <li><a href="https://github.com/rozard-webgen/packers" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
 
+    <div class="footer-bottom">
+      <div class="footer-brand-row">
+        <img src="/img/yuros_hu_c26bfce4cbb2ac63.webp" alt="Radova Logo" width="28" height="28" loading="lazy" decoding="async">
+        <p class="footer-copy">Copyright 2026 Radova Linux. All rights reserved.</p>
+      </div>
+      <a href="#" id="back-to-top" class="footer-top">
+        <svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+          <path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z"/>
+        </svg>
+        <span data-i18n="backToTop">Back to top</span>
+      </a>
+    </div>
+  </footer>
 
-
-<script>
-let darkmode = document.getElementById('darkmodes');
-let darkproc = ()=> {
-    let darkitem = darkmode.querySelectorAll('.mode');
-    let darkelem = Array.prototype.slice.call(darkitem);
-
-    darkelem.forEach( element => {
-
-        let mode = element.getAttribute('data-mode');
-        let nows = localStorage.getItem('darkmode');
-
-        if ( nows == 2 ) {
-            darkmode.querySelector('.darks .icon').classList.add('open');
-        }
-        else if ( nows == 3 ) {
-            darkmode.querySelector('.light .icon').classList.add('open');
-        }
-        else {
-            darkmode.querySelector('.systo .icon').classList.add('open');
-        }
-
-        element.addEventListener('click', ()=> {
-
-            if ( mode == 1 ) {
-                darkmode.querySelector('.systo .icon').classList.remove('open');
-                darkmode.querySelector('.darks .icon').classList.add('open');
-                document.documentElement.setAttribute("dark-mode", "dark");
-                localStorage.setItem('darkmode', '2');
-            }
-            else if (  mode == 2 ) {
-                darkmode.querySelector('.darks .icon').classList.remove('open');
-                darkmode.querySelector('.light .icon').classList.add('open');
-                document.documentElement.setAttribute("dark-mode", "light");
-                localStorage.setItem('darkmode', '3');
-            }
-            else if ( mode == 3 ) {
-                darkmode.querySelector('.light .icon').classList.remove('open');
-                darkmode.querySelector('.systo .icon').classList.add('open');
-
-                if (window.matchMedia &&  window.matchMedia('(prefers-color-scheme: dark)').matches ) {
-                    document.documentElement.setAttribute("dark-mode", "dark");
-                }
-                else {
-                    document.documentElement.setAttribute("dark-mode", "light");
-                }
-                localStorage.removeItem('darkmode');
-            }
-        });
-    });
-
-}
-if ( darkmode ) { darkproc(); } 
-</script>
+  <script src="/assets/js/loader.js" data-bundle="docs" defer></script>
 </body>
 </html>
