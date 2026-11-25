@@ -66,6 +66,8 @@
     }
     body { min-height: 100dvh; display: flex; flex-direction: column; }
     a { color: inherit; text-decoration: none; }
+    p { margin: 0 0 1rem; }
+    h1, h2, h3 { font-family: var(--font-heading); margin: 0 0 0.75rem; }
     ul[class] { margin: 0; padding: 0; list-style: none; }
     @media (min-width: 576px) { :root { --container-max: 510px; } }
     @media (min-width: 768px) { :root { --container-max: 700px; } }
@@ -123,12 +125,14 @@
       .header-menu { display: none; }
     }
     .hero-media {
-      position: relative; width: 100%; aspect-ratio: 1091 / 613;
+      position: relative; width: 100%; aspect-ratio: 1096 / 613;
       overflow: hidden; border-radius: 20px; background: var(--navy-900); border: 1px solid var(--border-card);
     }
     .hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
     main { flex: 1; margin: 0; padding: 0; }
     main > section { position: relative; padding-block: clamp(2.5rem, 5vw, 4rem); }
+    section[data-label] { border-top: 1px solid var(--border-line); }
+    section[data-label]::before { content: "// " attr(data-label); display: block; font-family: var(--font-mono); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 1.25rem; }
     .hero { padding-top: 2rem; padding-bottom: 3rem; }
     .hero-spec-strip { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; padding-bottom: 1rem; margin-bottom: 1.75rem; border-bottom: 1px solid var(--border-line); }
     .hero-spec-strip::before { content: attr(data-sys); font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--text-muted); }
@@ -196,8 +200,8 @@
 
       <div class="hero-split">
         <div class="hero-media" data-img="/img/banner.webp" data-alt="Radova Packers Banner">
-          <img src="/img/banner.webp" alt="Radova Packers Banner" width="1091" height="613" fetchpriority="high" decoding="sync">
-          <noscript><img src="/img/banner.webp" alt="Radova Packers Banner" width="1091" height="613"></noscript>
+          <img src="/img/banner.webp" alt="Radova Packers Banner" width="1096" height="613" fetchpriority="high" decoding="sync">
+          <noscript><img src="/img/banner.webp" alt="Radova Packers Banner" width="1096" height="613"></noscript>
         </div>
 
         <div class="hero-split-right">
