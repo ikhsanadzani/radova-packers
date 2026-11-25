@@ -97,7 +97,7 @@
     try {
       savedLang = localStorage.getItem("radova-lang") || "en";
     } catch (_) {}
-    applyLang(savedLang);
+    if (savedLang === "id") applyLang("id");
 
     langBtn.addEventListener("click", function () {
       const next = root.getAttribute("lang") === "id" ? "en" : "id";

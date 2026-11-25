@@ -123,10 +123,28 @@
       .header-menu { display: none; }
     }
     .hero-media {
-      position: relative; width: 100%; aspect-ratio: 16 / 9;
-      overflow: hidden; border-radius: 20px; background: var(--navy-900);
+      position: relative; width: 100%; aspect-ratio: 1091 / 613;
+      overflow: hidden; border-radius: 20px; background: var(--navy-900); border: 1px solid var(--border-card);
     }
     .hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    main { flex: 1; margin: 0; padding: 0; }
+    main > section { position: relative; padding-block: clamp(2.5rem, 5vw, 4rem); }
+    .hero { padding-top: 2rem; padding-bottom: 3rem; }
+    .hero-spec-strip { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; padding-bottom: 1rem; margin-bottom: 1.75rem; border-bottom: 1px solid var(--border-line); }
+    .hero-spec-strip::before { content: attr(data-sys); font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--text-muted); }
+    .hero-chip { display: inline-flex; align-items: center; border-radius: 999px; padding: 0.35rem 0.9rem; font-size: 13px; font-weight: 700; color: var(--red-900); border: 1px solid rgba(219,0,15,0.25); background: rgba(219,0,15,0.04); margin: 0; }
+    :root[data-theme="dark"] .hero-chip { color: var(--white); background: rgba(219,0,15,0.16); border-color: rgba(219,0,15,0.4); }
+    .hero-split { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+    @media (min-width: 1024px) { .hero-split { grid-template-columns: 1.1fr 1fr; gap: 2.75rem; } }
+    @media (min-width: 1280px) { .hero-split { gap: 3.5rem; } }
+    @media (min-width: 1536px) { .hero-split { gap: 4.5rem; } }
+    .hero-split-right h1 { font-family: var(--font-heading); font-size: clamp(1.75rem, 3.2vw, 2.5rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--text-heading); margin: 0 0 0.875rem; }
+    .hero-split-right h1 span { color: var(--text-accent); }
+    .hero-lead { font-size: 1rem; line-height: 1.65; color: var(--text-muted); max-width: 52ch; margin: 0 0 1.5rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 48px; padding: 0 1.5rem; border-radius: 9999px; font-size: 0.9375rem; font-weight: 700; border: none; }
+    .btn-primary { background: var(--red-600); color: var(--white); box-shadow: 0 4px 16px rgba(219,0,15,0.24); }
+    .btn-outline { background: var(--surface-card); color: var(--text-heading); border: 1px solid var(--border-card); }
   </style>
   <link rel="stylesheet" href="/assets/css/mans-below.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="/assets/css/mans-below.css"></noscript>
@@ -178,8 +196,8 @@
 
       <div class="hero-split">
         <div class="hero-media" data-img="/img/banner.webp" data-alt="Radova Packers Banner">
-          <img src="/img/banner.webp" alt="Radova Packers Banner" width="1200" height="675" decoding="async">
-          <noscript><img src="/img/banner.webp" alt="Radova Packers Banner"></noscript>
+          <img src="/img/banner.webp" alt="Radova Packers Banner" width="1091" height="613" fetchpriority="high" decoding="sync">
+          <noscript><img src="/img/banner.webp" alt="Radova Packers Banner" width="1091" height="613"></noscript>
         </div>
 
         <div class="hero-split-right">

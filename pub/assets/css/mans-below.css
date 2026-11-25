@@ -135,8 +135,9 @@ button {
   outline-offset: 3px;
 }
 
-@media (min-width: 576px) { :root { --container-max: 510px; } }
-@media (min-width: 768px) { :root { --container-max: 700px; } }
+/* Responsive Breakpoints (xs <576px: 100%, sm >=576px: 510px, md >=768px: 700px, lg >=1024px: 950px, xl >=1280px: 1200px, xxl >=1536px: 1450px) */
+@media (min-width: 576px)  { :root { --container-max: 510px; } }
+@media (min-width: 768px)  { :root { --container-max: 700px; } }
 @media (min-width: 1024px) { :root { --container-max: 950px; } }
 @media (min-width: 1280px) { :root { --container-max: 1200px; } }
 @media (min-width: 1536px) { :root { --container-max: 1450px; } }
@@ -506,7 +507,7 @@ button.btn-lang:hover {
 .hero-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1091 / 613;
   overflow: hidden;
   border-radius: 20px;
   background: var(--navy-900);
@@ -555,6 +556,26 @@ button.btn-lang:hover {
   .manual-grid {
     grid-template-columns: minmax(0, 1fr) 320px;
     gap: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-split {
+    gap: 3.5rem;
+  }
+  .manual-grid {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .hero-split {
+    gap: 4.5rem;
+  }
+  .manual-grid {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 3rem;
   }
 }
 
