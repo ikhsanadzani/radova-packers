@@ -54,7 +54,9 @@ Seluruh halaman ekosistem (`learns`, `events`, `latest`, `about`) wajib merujuk 
 
 ### Type Scale (`guideline-radova` + Homepage)
 - **Heading (`Lato` di produksi Homepage, scale `H1–H6`):**
-  - `H1`: `56px` (`3.5rem` desktop, `clamp(1.85rem, 4.8vw, 3.25rem)` → `3.1rem` at `1280px` → `3.5rem` at `1536px`, `font-weight: 900`, `line-height: 1.05`, `letter-spacing: -0.03em`)
+  - `H1` (Homepage Hero): `56px` (`3.5rem` desktop, `clamp(1.85rem, 4.8vw, 3.25rem)` → `3.1rem` at `1280px` → `3.5rem` at `1536px`, `font-weight: 900`, `line-height: 1.05`, `letter-spacing: -0.03em`)
+  - `H1` (Inner / Manual Page `.content h1.heading`): `clamp(1.25rem, 1.8vw, 1.5rem)` (`20px`–`24px`, `font-weight: 900`, `line-height: 1.2`, `letter-spacing: -0.02em`)
+  - Manual Section Headings (`.pages`): `h1`: `1.125rem` (`18px`), `h2`: `1.05rem` (`16.8px`), `h3`: `1rem` (`16px`)
   - `H2`: `48px` (`3rem`) · `H3`: `40px` (`2.5rem`) · `H4`: `32px` (`2rem`) · `H5`: `24px` (`1.5rem`) · `H6`: `20px` (`1.25rem`)
 - **Body (`Roboto Variable` di produksi Homepage, Regular & Bold):**
   - `Large Text`: `20px` (`1.25rem`) · `Medium Text`: `18px` (`1.125rem`) · `Normal Text`: `16px` (`1rem`, `line-height: 1.6`, `max-width: 65ch`) · `Small Text`: `14px` (`0.875rem`)
@@ -77,11 +79,13 @@ padding-inline: max(var(--pad-x), calc((100% - var(--container-max)) / 2));
 | Size | Breakpoint (`min-width`) | Container Max-Width (`--container-max`) | Root Font Size (`html`) |
 |---|---|---|---|
 | **Extra small (`xs`)** | `< 576px` (default) | `100%` (`--pad-x: 1rem`) | `100%` (`16px`) |
-| **Small (`sm`)** | `>= 576px` | `510px` | `106.25%` (`17px`) |
-| **Medium (`md`)** | `>= 768px` | `700px` | `112.5%` (`18px`) |
-| **Large (`lg`)** | `>= 1024px` | `950px` | `118.75%` (`19px`) |
-| **Extra large (`xl`)** | `>= 1280px` | `1200px` | `125%` (`20px`) |
-| **Extra extra large (`xxl`)** | `>= 1536px` | `1450px` | `131.25%` (`21px`) |
+| **Small (`sm`)** | `>= 576px` | `510px` | `100%` (`16px`) |
+| **Medium (`md`)** | `>= 768px` | `700px` | `100%` (`16px`) |
+| **Large (`lg`)** | `>= 1024px` | `950px` | `100%` (`16px`) |
+| **Extra large (`xl`)** | `>= 1280px` | `1200px` | `100%` (`16px`) |
+| **Extra extra large (`xxl`)** | `>= 1536px` | `1450px` | `100%` (`16px`) |
+
+> **Catatan:** Root `html` dikunci di `100%` (`16px`) pada semua breakpoint agar ukuran tipografi `rem` tetap konsisten dan tidak ikut membesar di layar lebar.
 
 ---
 
@@ -90,8 +94,8 @@ padding-inline: max(var(--pad-x), calc((100% - var(--container-max)) / 2));
 ### Header & Navigation (`.site-header`)
 - **Layout:** `position: sticky; top: 0; z-index: 100; min-height: 48px; padding-block: 0.65rem; gap: 1.25rem`.
 - **Glass Surface:** `background: var(--surface-header); backdrop-filter: blur(16px) saturate(180%); border-bottom: 1px solid var(--border-line)`.
-- **Light Mode Ink:** `.brand-name` dan `.nav-list a` memakai `#0E0347` (`--navy-900`); `.dropdown-content a` memakai `#0E0347` (WCAG AA >= 4.5:1).
-- **About Dropdown:** Pemicu `<button type="button" id="about-menu-btn" class="btn-navy">` (`border-radius: 16px`, `font-size: 13px`). Panel `.dropdown-content` (`top: calc(100% + 18px)`, `min-width: 250px`, `border-radius: 16px`) **tanpa** `role="menu"` / `role="menuitem"`.
+- **Light Mode Ink:** `.brand-name` dan `.nav-list a` memakai `#0E0347` (`--navy-900`), link aktif (`aria-current="page"`) memakai `#A10000` dengan `border-bottom-color: var(--red-600)`.
+- **Packers Navigation:** `Manual`, `Tutorial`, `Documentation`, `Forum`, `Info` (tanpa halaman `Wiki` dan tanpa tombol dropdown `About`).
 - **Theme & Lang Controls:**
   - `button.btn-theme`: `36px x 36px` bulat (`border-radius: 999px`), SVG matahari/bulan langsung (tanpa HTMX swap).
   - `button.btn-lang`: `border-radius: 16px`, `font-size: 13px`, label `EN` / `ID`.
@@ -105,7 +109,10 @@ padding-inline: max(var(--pad-x), calc((100% - var(--container-max)) / 2));
 - **Hero Media Placeholder (`.hero-media`):**
   - Gunakan kontainer placeholder `<div class="hero-media" data-img="..." data-alt="...">` lengkap dengan `<noscript><img ...></noscript>` untuk menjaga `CLS = 0`.
   - Kunci rasio wadah sesuai proporsi aset gambar/gedung (`aspect-ratio: 16 / 9` atau `aspect-ratio: 4 / 3` — developer tinggal menyesuaikan rasio sesuai kebutuhan), dengan `overflow: hidden; border-radius: 20px;` serta `.hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; }`.
-- **Surface:** `background: var(--surface-card)`, `border: 1px solid var(--border-card)`, `border-radius: 16px`–`20px`.
+- **Surface & Garis Aksen Merah Radova:**
+  - Card konten (`.content`) dan sidebar (`.sidebar`) memakai `background: var(--surface-card)` / `var(--surface-subtle)`, `border: 1px solid var(--border-card)`, `border-radius: 20px`, serta `border-top: 3px solid var(--red-600)` (sama seperti `.info-bar` dan `.site-footer`).
+  - Divider header (`.content .header` dan `.sidebar-title`) memakai `border-bottom: 2px solid var(--red-600)`.
+  - Heading section manual (`.pages h1`) memakai `border-left: 3px solid var(--red-600)` dengan penomoran `1 |`, `2 |` berwarna `var(--red-600)`.
 - **Dark Mode Hero Wash:**
   `radial-gradient(46% 52% at 82% 18%, rgba(219, 0, 15, 0.16), transparent 72%), radial-gradient(38% 46% at 15% 32%, rgba(21, 11, 82, 0.45), transparent 72%), var(--surface-page)`.
 

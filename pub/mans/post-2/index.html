@@ -19,7 +19,12 @@
   </script>
   <style>
     :root {
+      color-scheme: light;
+      --font-heading: "Lato", system-ui, -apple-system, sans-serif;
+      --font-body: "Roboto Variable", system-ui, -apple-system, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       --red-900: #A10000;
+      --red-700: #BB080B;
       --red-600: #DB000F;
       --navy-950: #0B0711;
       --navy-900: #0E0347;
@@ -27,45 +32,48 @@
       --lavender: #F7F6FF;
       --white: #FFFFFF;
       --surface-page: #FFFFFF;
+      --surface-card: #FFFFFF;
       --surface-subtle: #F7F6FF;
+      --surface-dock: #F0EFFC;
       --surface-header: rgba(255, 255, 255, 0.82);
-      --text-primary: #0E0347;
-      --text-heading: #A10000;
+      --text-primary: var(--red-900);
+      --text-heading: var(--red-900);
+      --text-muted: #5B5A78;
+      --text-accent: var(--red-600);
       --border-line: rgba(14, 3, 71, 0.10);
       --border-card: rgba(14, 3, 71, 0.12);
-      --font-heading: "Lato", system-ui, -apple-system, sans-serif;
-      --font-body: "Roboto Variable", system-ui, -apple-system, sans-serif;
-      --pad-x: 1rem;
       --container-max: 100%;
+      --pad-x: 1rem;
     }
     :root[data-theme="dark"] {
+      color-scheme: dark;
       --surface-page: #0B0711;
+      --surface-card: #150B52;
       --surface-subtle: #150B52;
+      --surface-dock: #0E0347;
       --surface-header: rgba(11, 7, 17, 0.88);
       --text-primary: #FFFFFF;
       --text-heading: #FFFFFF;
+      --text-muted: #C4C0D4;
       --border-line: rgba(196, 192, 212, 0.18);
       --border-card: rgba(196, 192, 212, 0.16);
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 100%; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      max-width: 100%; overflow-x: clip; margin: 0; padding: 0;
+      background-color: var(--surface-page); color: var(--text-primary);
+      font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+    }
+    body { min-height: 100dvh; display: flex; flex-direction: column; }
+    a { color: inherit; text-decoration: none; }
+    ul[class] { margin: 0; padding: 0; list-style: none; }
     @media (min-width: 576px) { :root { --container-max: 510px; } }
     @media (min-width: 768px) { :root { --container-max: 700px; } }
     @media (min-width: 1024px) { :root { --container-max: 950px; } }
     @media (min-width: 1280px) { :root { --container-max: 1200px; } }
     @media (min-width: 1536px) { :root { --container-max: 1450px; } }
-    body {
-      font-family: var(--font-body);
-      color: var(--text-primary);
-      background: var(--surface-page);
-      line-height: 1.6;
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-    }
-    a { color: inherit; text-decoration: none; }
-    .site-header, main, .site-footer {
-      padding-inline: max(var(--pad-x), calc((100% - var(--container-max)) / 2));
+    .site-header, main > section, .site-footer {
+      width: 100%; padding-inline: max(var(--pad-x), calc((100% - var(--container-max)) / 2));
     }
     .site-header {
       position: sticky; top: 0; z-index: 100; min-height: 48px; padding-block: 0.65rem;
@@ -75,8 +83,7 @@
       border-bottom: 1px solid var(--border-line);
     }
     :root[data-theme="dark"] .site-header {
-      background: var(--surface-header);
-      border-bottom-color: var(--border-line);
+      background: var(--surface-header); border-bottom-color: var(--border-line);
     }
     .brand-link { display: inline-flex; align-items: center; gap: 0.625rem; flex-shrink: 0; }
     .brand-logo { width: 34px; height: 34px; border-radius: 8px; object-fit: contain; display: block; }
@@ -86,7 +93,7 @@
     }
     :root[data-theme="dark"] .brand-name { color: var(--white); }
     .header-menu { display: flex; align-items: center; gap: 1.25rem; margin-left: auto; }
-    .nav-list { display: flex; align-items: center; list-style: none; gap: 1.125rem; }
+    .nav-list { display: flex; align-items: center; gap: 1.25rem; }
     .nav-list a { font-size: 15px; font-weight: 500; color: var(--navy-900); }
     .nav-list a[aria-current="page"] { font-weight: 700; color: var(--red-900); }
     :root[data-theme="dark"] .nav-list a { color: var(--white); }
@@ -94,34 +101,32 @@
     button.btn-theme {
       width: 36px; height: 36px; border-radius: 999px;
       border: 1px solid var(--border-card); background: var(--surface-subtle);
-      color: var(--text-primary); display: inline-flex; align-items: center; justify-content: center;
+      color: var(--navy-900); display: inline-flex; align-items: center; justify-content: center;
     }
     button.btn-theme .icon-moon { display: none; }
+    :root[data-theme="dark"] button.btn-theme { color: var(--white); }
     :root[data-theme="dark"] button.btn-theme .icon-sun { display: none; }
     :root[data-theme="dark"] button.btn-theme .icon-moon { display: block; }
     button.btn-lang {
       height: 36px; padding: 0 0.75rem; border-radius: 16px;
       border: 1px solid var(--border-card); background: var(--surface-subtle);
-      color: var(--text-primary); font-size: 13px; font-weight: 700;
+      color: var(--navy-900); font-family: var(--font-mono); font-size: 13px; font-weight: 700;
     }
-    .btn-navy {
-      display: inline-flex; align-items: center; gap: 0.375rem;
-      background: var(--navy-900); color: var(--white); border: 1px solid transparent;
-      border-radius: 16px; padding: 0.42rem 0.85rem; font-size: 13px; font-weight: 600;
-    }
-    .dropdown-content { display: none; }
+    :root[data-theme="dark"] button.btn-lang { color: var(--white); }
     .nav-toggle { display: none; }
     @media (max-width: 767px) {
       .nav-toggle {
         display: inline-flex; width: 38px; height: 38px; margin-left: auto;
         border-radius: 10px; border: 1px solid var(--border-card); background: var(--surface-subtle);
-        color: var(--text-primary); align-items: center; justify-content: center;
+        color: var(--navy-900); align-items: center; justify-content: center;
       }
       .header-menu { display: none; }
     }
-    .banner-wrapper { position: relative; width: 100%; }
-    .banner { width: 100%; height: clamp(15.625rem, 35vw, 23.125rem); border-radius: 20px; overflow: hidden; background: var(--navy-900); }
-    .banner-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-media {
+      position: relative; width: 100%; aspect-ratio: 16 / 9;
+      overflow: hidden; border-radius: 20px; background: var(--navy-900);
+    }
+    .hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
   </style>
   <link rel="stylesheet" href="/assets/css/mans-below.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="/assets/css/mans-below.css"></noscript>
@@ -166,144 +171,98 @@
   </header>
 
   <main>
-    <div class="banner-wrapper">
-      <div class="banner hero-media" data-img="/img/banner.webp" data-alt="Radova Packers Banner">
-        <img src="/img/banner.webp" alt="Radova Packers Banner" class="banner-img" width="1200" height="675" decoding="async">
-        <noscript><img src="/img/banner.webp" alt="Radova Packers Banner"></noscript>
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="hero-spec-strip" data-sys="SYS // PACKERS MANUAL ">
+        <p class="hero-chip" data-i18n="chip">Packers Manual · v1.0.0.0</p>
       </div>
 
-      <div class="info-bar">
-        <div class="left-bar">
-          <a href="https://api.github.com/repos/rozard-webgen/packers/tarball/v1.0.0.0" target="_blank" rel="noopener noreferrer" class="download-btn" aria-label="Download Package">
-            <svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
-              <path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/>
-            </svg>
-            <span data-i18n="download">Download</span>
-          </a>
-          <div class="icons">
-            <a href="https://github.com/rozard-webgen/packers" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub">
-              <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+      <div class="hero-split">
+        <div class="hero-media" data-img="/img/banner.webp" data-alt="Radova Packers Banner">
+          <img src="/img/banner.webp" alt="Radova Packers Banner" width="1200" height="675" decoding="async">
+          <noscript><img src="/img/banner.webp" alt="Radova Packers Banner"></noscript>
+        </div>
+
+        <div class="hero-split-right">
+          <h1 id="hero-title">packers <span>Manual</span></h1>
+          <p class="hero-lead" data-i18n="subtitle">Official reference manual, command synopsis, and usage guide for Radova Packers.</p>
+
+          <div class="hero-actions">
+            <a href="https://api.github.com/repos/rozard-webgen/packers/tarball/v1.0.0.0" target="_blank" rel="noopener noreferrer" class="btn btn-primary" aria-label="Download Package">
+              <svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+                <path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/>
+              </svg>
+              <span data-i18n="download">Download</span>
+            </a>
+
+            <a href="https://github.com/rozard-webgen/packers" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="GitHub Repository">
+              <svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
                 <path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"/>
               </svg>
+              <span data-i18n="github">GitHub Repository</span>
             </a>
           </div>
         </div>
-        <div class="right-bar">
-          <div class="info">
-            <div class="author">
-              <img src="/img/author.webp" class="avatar" alt="author" width="34" height="34" loading="lazy" decoding="async">
-              <div>
-                <p class="label" data-i18n="developer">Developer</p>
-                <p>Rozard Webgen</p>
-              </div>
-            </div>
-            <div class="version">
-              <p class="label" data-i18n="version">Latest Version</p>
-              <p>v1.0.0.0</p>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+    </section>
 
-    <nav aria-label="Package Sections">
-      <ul class="panel">
-        <li>
-          <a href="/mans/" class="item active" aria-current="page">
-            <span class="icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"/></svg>
-            </span>
-            <span>Manual</span>
-          </a>
-        </li>
-        <li>
-          <a href="/blog/" class="item">
-            <span class="icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M208,160a32,32,0,0,0-24,10.84V96a40,40,0,0,0-40-40H123.31l18.35-18.34a8,8,0,0,0-11.32-11.32l-32,32a8,8,0,0,0,0,11.32l32,32a8,8,0,0,0,11.32-11.32L123.31,72H144a24,24,0,0,1,24,24v74.84A32,32,0,1,0,208,160ZM80,88a32,32,0,1,0-40,31v42.16A32,32,0,1,0,80,192a32,32,0,0,0-24-30.84V119A32,32,0,0,0,80,88ZM48,72A16,16,0,1,1,32,88,16,16,0,0,1,48,72Zm0,136a16,16,0,1,1,16-16A16,16,0,0,1,48,208Zm160,0a16,16,0,1,1,16-16A16,16,0,0,1,208,208Z"/></svg>
-            </span>
-            <span>Tutorial</span>
-          </a>
-        </li>
-        <li>
-          <a href="/docs/" class="item">
-            <span class="icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V96H40V56ZM40,112H96v88H40Zm176,88H112V112H216v88Z"/></svg>
-            </span>
-            <span>Documentation</span>
-          </a>
-        </li>
-        <li>
-          <a href="/talks/" class="item">
-            <span class="icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.84,15.84,0,0,0,9.25,14.5A16.05,16.05,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48Zm0,144H80a8,8,0,0,0-5.23,1.95L40,224V64H216Z"/></svg>
-            </span>
-            <span>Forum</span>
-          </a>
-        </li>
-        <li>
-          <a href="/info/" class="item">
-            <span class="icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></svg>
-            </span>
-            <span>Info</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <section id="manual-content" data-label="reference" aria-labelledby="manual-heading">
+      <div class="manual-grid">
+        <article class="spec-card">
+          <span class="card-index-pill">PACKERS(1)</span>
+          <div class="manual-card-head">
+            <h2 id="manual-heading" class="manual-card-title">Post 2</h2>
+            <p class="manual-card-meta">Radova Linux Package Reference</p>
+          </div>
 
-    <div class="overlay">
-      <article class="content manspage">
-        <div class="header">
-          <h1 class="heading">packers Manual</h1>
-          <span class="hero-chip">PACKERS(1)</span>
-        </div>
-        <div class="pages">
-          <h1>Name</h1>
-          <p>Post 2</p>
-          <h1 id="kurosh-heading-1-description">Description</h1>
-          <p>Laborum voluptate pariatur ex culpa magna nostrud est incididunt fugiat
+          <div class="pages">
+            <h1>Name</h1>
+            <p>Post 2</p>
+
+            <h1 id="kurosh-heading-1-description">Description</h1>
+            <p>Laborum voluptate pariatur ex culpa magna nostrud est incididunt fugiat
 pariatur do dolor ipsum enim. Consequat tempor do dolor eu. Non id id anim anim
 excepteur excepteur pariatur nostrud qui irure ullamco.</p>
-        </div>
-      </article>
+          </div>
+        </article>
 
-      <aside class="sidebar" aria-label="Manual navigation">
-        <section class="pagelist">
-          <h2 class="sidebar-title">
-            <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
-              <path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"/>
-            </svg>
-            <span data-i18n="manualPages">Manual</span>
-          </h2>
-          <ul class="sidebar-block">
-            <li class="item open">
-              <div class="parent is-active">
-                <span class="icons" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"/></svg>
-                </span>
-                <a class="heading" href="/mans/post-2/" aria-current="page">Post 2</a>
-              </div>
-            </li>
-            <li class="item open">
-              <div class="parent">
-                <span class="icons" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"/></svg>
-                </span>
-                <a class="heading" href="/mans/post-1/">Post 1</a>
-              </div>
-            </li>
-            <li class="item open">
-              <div class="parent">
-                <span class="icons" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"/></svg>
-                </span>
-                <a class="heading" href="/mans/">Manual</a>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </aside>
-    </div>
+        <aside class="spec-card-interlock" aria-label="Manual navigation">
+          <div class="card-zone-body">
+            <h2 class="sidebar-title" data-i18n="manualPages">Manual Pages</h2>
+            <ul class="sidebar-block">
+              <li>
+                <a href="/mans/" class="sidebar-link">
+                  <span>Manual</span>
+                  <span>01</span>
+                </a>
+              </li>
+              <li>
+                <a href="/mans/post-1/" class="sidebar-link">
+                  <span>Post 1</span>
+                  <span>02</span>
+                </a>
+              </li>
+              <li>
+                <a href="/mans/post-2/" class="sidebar-link is-active" aria-current="page">
+                  <span>Post 2</span>
+                  <span>03</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-dock">
+            <div class="dock-row">
+              <span class="dock-k" data-i18n="developer">Developer</span>
+              <span class="dock-v">Rozard Webgen</span>
+            </div>
+            <div class="dock-row">
+              <span class="dock-k" data-i18n="version">Latest Version</span>
+              <span class="dock-v">v1.0.0.0</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -352,6 +311,6 @@ excepteur excepteur pariatur nostrud qui irure ullamco.</p>
     </div>
   </footer>
 
-  <script src="/assets/js/loader.js" defer></script>
+  <script src="/assets/js/site.bundle.js" defer></script>
 </body>
 </html>

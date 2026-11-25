@@ -1,3 +1,4 @@
+// ponytail: consolidated 5 page bundles and loader.js into one deferred script
 (function () {
   "use strict";
 
@@ -8,7 +9,6 @@
   const headerMenu = document.getElementById("header-menu");
   const backToTopBtn = document.getElementById("back-to-top");
 
-  /* 1. Theme Toggle */
   function applyTheme(theme) {
     if (theme === "dark") {
       root.setAttribute("data-theme", "dark");
@@ -25,9 +25,7 @@
   }
 
   if (themeBtn) {
-    const isDark = root.getAttribute("data-theme") === "dark";
-    applyTheme(isDark ? "dark" : "light");
-
+    applyTheme(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
     themeBtn.addEventListener("click", function () {
       const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       applyTheme(next);
@@ -37,7 +35,6 @@
     });
   }
 
-  /* 2. Language Toggle (EN / ID) */
   const i18n = {
     en: {
       chip: "Packers Manual · v1.0.0.0",
@@ -47,8 +44,16 @@
       version: "Latest Version",
       manualPages: "Manual Pages",
       backToTop: "Back to top",
-      about: "About",
-      subtitle: "Official reference manual, command synopsis, and usage guide for Radova Packers."
+      subtitle: "Official reference manual, command synopsis, and usage guide for Radova Packers.",
+      categories: "Categories",
+      tutorials: "Tutorials",
+      category: "Category",
+      chipTutorials: "3 tutorials",
+      navigation: "Navigation",
+      package: "Package",
+      maintainers: "Maintainers",
+      follow: "Follow on GitHub",
+      forumIntro: "The packers discussion runs on GitHub Issues through utterances. Sign in with GitHub to join in."
     },
     id: {
       chip: "Manual Packers · v1.0.0.0",
@@ -58,8 +63,16 @@
       version: "Versi Terbaru",
       manualPages: "Halaman Manual",
       backToTop: "Kembali ke atas",
-      about: "Tentang",
-      subtitle: "Manual referensi resmi, sinopsis perintah, dan panduan penggunaan Radova Packers."
+      subtitle: "Manual referensi resmi, sinopsis perintah, dan panduan penggunaan Radova Packers.",
+      categories: "Kategori",
+      tutorials: "Tutorial",
+      category: "Kategori",
+      chipTutorials: "3 tutorial",
+      navigation: "Navigasi",
+      package: "Paket",
+      maintainers: "Pengelola",
+      follow: "Ikuti di GitHub",
+      forumIntro: "Diskusi packers berjalan di GitHub Issues lewat utterances. Masuk dengan akun GitHub untuk ikut berdiskusi."
     }
   };
 
@@ -75,9 +88,7 @@
     }
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       const key = el.getAttribute("data-i18n");
-      if (dict[key]) {
-        el.textContent = dict[key];
-      }
+      if (dict[key]) el.textContent = dict[key];
     });
   }
 
@@ -89,8 +100,7 @@
     applyLang(savedLang);
 
     langBtn.addEventListener("click", function () {
-      const current = root.getAttribute("lang") === "id" ? "id" : "en";
-      const next = current === "en" ? "id" : "en";
+      const next = root.getAttribute("lang") === "id" ? "en" : "id";
       applyLang(next);
       try {
         localStorage.setItem("radova-lang", next);
@@ -98,7 +108,6 @@
     });
   }
 
-  /* 3. Mobile Drawer */
   if (navToggle && headerMenu) {
     navToggle.addEventListener("click", function () {
       const expanded = navToggle.getAttribute("aria-expanded") === "true";
@@ -107,11 +116,26 @@
     });
   }
 
-  /* 4. Back to Top */
   if (backToTopBtn) {
     backToTopBtn.addEventListener("click", function (e) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+  }
+
+  let commentsTheme = null;
+  function syncComments() {
+    const frame = document.querySelector(".utterances-frame");
+    const theme = root.getAttribute("data-theme") === "dark" ? "github-dark" : "github-light";
+    if (!frame || theme === commentsTheme) return;
+    frame.contentWindow.postMessage({ type: "set-theme", theme: theme }, "https://utteranc.es");
+    commentsTheme = theme;
+  }
+  if (document.querySelector(".utterances") || document.querySelector(".utterances-frame")) {
+    window.addEventListener("message", function (e) {
+      if (e.origin === "https://utteranc.es") syncComments();
+    });
+    if (themeBtn) themeBtn.addEventListener("click", syncComments);
+    syncComments();
   }
 })();
